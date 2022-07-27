@@ -1,17 +1,17 @@
 package main;
 
-import classes.Servico;
-import view.ViewAddServico;
+import view.ViewInicio;
 
 public class Main {
 
 	
 	public static void main(String[] args) {
 		
-		Servico servico01 = new Servico("Degrade", 0.0);
 		
-		ViewAddServico telaServico = new ViewAddServico();
-		telaServico.setVisible(true);
+
+		ViewInicio inicio = new ViewInicio();
+		
+		inicio.setVisible(true);
 		
 	}
 }

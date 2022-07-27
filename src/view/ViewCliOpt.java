@@ -21,11 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 
-public class ViewLogin extends JFrame {
+public class ViewCliOpt extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtLogin;
-	private JPasswordField txtPass;
 
 	/**
 	 * Launch the application.
@@ -34,7 +32,7 @@ public class ViewLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewLogin frame = new ViewLogin();
+					ViewCliOpt frame = new ViewCliOpt();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +44,7 @@ public class ViewLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewLogin() {
+	public ViewCliOpt() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 352, 439);
 		contentPane = new JPanel();
@@ -56,8 +54,8 @@ public class ViewLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("BarberShop");
-		lblNewLabel.setBounds(95, 11, 164, 41);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setBounds(81, 11, 169, 41);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Fira Code", Font.PLAIN, 25));
 		contentPane.add(lblNewLabel);
 		
@@ -65,51 +63,42 @@ public class ViewLogin extends JFrame {
 		scrollPane.setBounds(443, -25, -437, 296);
 		contentPane.add(scrollPane);
 		
-		txtLogin = new JTextField();
-		txtLogin.setBounds(95, 111, 146, 35);
-		contentPane.add(txtLogin);
-		txtLogin.setColumns(10);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Senha");
-		lblNewLabel_1_1.setBounds(95, 172, 68, 22);
-		lblNewLabel_1_1.setForeground(new Color(153, 153, 153));
-		lblNewLabel_1_1.setFont(new Font("Fira Code", Font.ITALIC, 14));
-		contentPane.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Login");
-		lblNewLabel_1_1_1.setBounds(95, 78, 68, 22);
-		lblNewLabel_1_1_1.setForeground(new Color(153, 153, 153));
-		lblNewLabel_1_1_1.setFont(new Font("Fira Code", Font.ITALIC, 14));
-		contentPane.add(lblNewLabel_1_1_1);
-		
-		JButton btnLogin = new JButton("Entrar");
-		btnLogin.addActionListener(new ActionListener() {
+		JButton btnClientes = new JButton("Listar");
+		btnClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewBarbeiro telaInicio = new ViewBarbeiro();
+				ViewListaCli telaLista = new ViewListaCli();
+				telaLista.setVisible(true);
 				
-				if(txtLogin.getText().equals("admin") && new String(txtPass.getPassword()).equals("admin")) {
-					telaInicio.setVisible(true);
-					
-				} else {
-					ViewAgendamento agenda = new ViewAgendamento();
-					agenda.setVisible(true);
-				}
 			}
 		});
-		btnLogin.setBounds(95, 251, 146, 35);
-		btnLogin.setFont(new Font("Fira Code", Font.PLAIN, 17));
-		btnLogin.setBackground(new Color(255, 255, 255));
-		contentPane.add(btnLogin);
+		btnClientes.setBounds(81, 217, 169, 72);
+		btnClientes.setFont(new Font("Fira Code", Font.PLAIN, 17));
+		btnClientes.setBackground(new Color(255, 255, 255));
+		contentPane.add(btnClientes);
 		
-		txtPass = new JPasswordField();
-		txtPass.setBounds(95, 205, 146, 35);
-		contentPane.add(txtPass);
+		JButton btnAgendamentos = new JButton("Cadastrar");
+		btnAgendamentos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewCadCli telaCad = new ViewCadCli();
+				telaCad.setVisible(true);
+			}
+		});
+		btnAgendamentos.setFont(new Font("Fira Code", Font.PLAIN, 17));
+		btnAgendamentos.setBackground(Color.WHITE);
+		btnAgendamentos.setBounds(81, 117, 169, 72);
+		contentPane.add(btnAgendamentos);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setToolTipText("");
 		separator_1.setForeground(Color.BLACK);
 		separator_1.setBackground(Color.BLACK);
-		separator_1.setBounds(36, 50, 269, 2);
+		separator_1.setBounds(34, 50, 269, 2);
 		contentPane.add(separator_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("Clientes");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(117, 76, 105, 19);
+		contentPane.add(lblNewLabel_1);
 	}
 }

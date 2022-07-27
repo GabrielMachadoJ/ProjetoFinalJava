@@ -30,7 +30,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
 import javax.swing.DefaultComboBoxModel;
 
-public class ViewAgendamento extends JFrame {
+public class ViewAgenda extends JFrame {
 
 	private JPanel contentPane;
 
@@ -41,7 +41,7 @@ public class ViewAgendamento extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAgendamento frame = new ViewAgendamento();
+					ViewAgenda frame = new ViewAgenda();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class ViewAgendamento extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewAgendamento() {
+	public ViewAgenda() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 352, 439);
 		contentPane = new JPanel();
@@ -63,7 +63,7 @@ public class ViewAgendamento extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("BarberShop");
-		lblNewLabel.setBounds(87, 4, 166, 52);
+		lblNewLabel.setBounds(87, 11, 166, 52);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Fira Code", Font.PLAIN, 25));
 		contentPane.add(lblNewLabel);
@@ -72,64 +72,22 @@ public class ViewAgendamento extends JFrame {
 		scrollPane.setBounds(443, -25, -437, 296);
 		contentPane.add(scrollPane);
 		
-		JButton btnAgendar = new JButton("Salvar");
-		btnAgendar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnAgendar.setBounds(87, 340, 166, 35);
-		btnAgendar.setFont(new Font("Fira Code", Font.PLAIN, 17));
-		btnAgendar.setBackground(new Color(255, 255, 255));
-		contentPane.add(btnAgendar);
-		
-		JComboBox optHoras = new JComboBox();
-		optHoras.setModel(new DefaultComboBoxModel(new String[] {"", "8:30", "9:30", "10:30", "13:30", "14:30", "15:30", "16:30", "17:30"}));
-		optHoras.setBackground(new Color(255, 255, 255));
-		optHoras.setBounds(31, 133, 269, 30);
-		contentPane.add(optHoras);
-		
-		JComboBox optBarbeiro = new JComboBox();
-		optBarbeiro.setModel(new DefaultComboBoxModel(new String[] {"", "Jorge", "Vitor", "Juninho", "Trevor"}));
-		optBarbeiro.setBackground(Color.WHITE);
-		optBarbeiro.setBounds(31, 174, 269, 30);
-		contentPane.add(optBarbeiro);
-		
 		JEditorPane agendaLista = new JEditorPane();
-		agendaLista.setText("Nome: Vitor" + "\nDia: 10/03/2022" + "\nHora: 14:30" + "\nBarbeiro: Jorge");
+		agendaLista.setText("Nome: Vitor\r\nDia: 10/03/2022\r\nHora: 14:30\r\nBarbeiro: Jorge\r\n----------------------\r\nNome: Junior\r\nDia: 29/03/2022\r\nHora: 15:30\r\nBarbeiro: Trevor");
 		agendaLista.setFont(new Font("Fira Code", Font.PLAIN, 16));
-		agendaLista.setBounds(31, 228, 269, 90);
+		agendaLista.setBounds(45, 103, 269, 265);
 		contentPane.add(agendaLista);
 		
 		JSeparator separator = new JSeparator();
 		separator.setToolTipText("");
 		separator.setForeground(Color.BLACK);
 		separator.setBackground(Color.BLACK);
-		separator.setBounds(31, 215, 269, 2);
+		separator.setBounds(45, 90, 269, 2);
 		contentPane.add(separator);
 		
-		JLabel lblNewLabel_1 = new JLabel("Agendamento Da Semana");
+		JLabel lblNewLabel_1 = new JLabel("Agendamentos Da Semana");
 		lblNewLabel_1.setFont(new Font("Fira Code", Font.ITALIC, 14));
-		lblNewLabel_1.setBounds(67, 52, 207, 14);
+		lblNewLabel_1.setBounds(75, 65, 207, 14);
 		contentPane.add(lblNewLabel_1);
-		
-		JComboBox optData = new JComboBox();
-		optData.setModel(new DefaultComboBoxModel(new String[] {"", "29/07/2022", "30/07/2022", "31/07/2022", "01/07/2022", "02/07/2022", "03/07/2022", "04/07/2022"}));
-		optData.setBackground(Color.WHITE);
-		optData.setBounds(31, 92, 129, 30);
-		contentPane.add(optData);
-		
-		JComboBox optPeriodo = new JComboBox();
-		optPeriodo.setModel(new DefaultComboBoxModel(new String[] {"", "Manhã", "Tarde"}));
-		optPeriodo.setBackground(Color.WHITE);
-		optPeriodo.setBounds(179, 92, 121, 30);
-		contentPane.add(optPeriodo);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setToolTipText("");
-		separator_1.setForeground(Color.BLACK);
-		separator_1.setBackground(Color.BLACK);
-		separator_1.setBounds(31, 79, 269, 2);
-		contentPane.add(separator_1);
 	}
 }
