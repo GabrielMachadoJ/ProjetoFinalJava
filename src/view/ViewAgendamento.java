@@ -1,37 +1,32 @@
 package view;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.View;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.DropMode;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JEditorPane;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import classes.Agendamento;
 
 public class ViewAgendamento extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected static final String String = null;
 	private JPanel contentPane;
 
 	/**
@@ -41,7 +36,7 @@ public class ViewAgendamento extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAgendamento frame = new ViewAgendamento();
+					ViewAgendamento frame = new ViewAgendamento(String);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +48,7 @@ public class ViewAgendamento extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewAgendamento() {
+	public ViewAgendamento(String nome) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 352, 439);
 		contentPane = new JPanel();
@@ -72,40 +67,18 @@ public class ViewAgendamento extends JFrame {
 		scrollPane.setBounds(443, -25, -437, 296);
 		contentPane.add(scrollPane);
 		
-		JButton btnAgendar = new JButton("Salvar");
-		btnAgendar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnAgendar.setBounds(87, 340, 166, 35);
-		btnAgendar.setFont(new Font("Fira Code", Font.PLAIN, 17));
-		btnAgendar.setBackground(new Color(255, 255, 255));
-		contentPane.add(btnAgendar);
-		
-		JComboBox optHoras = new JComboBox();
-		optHoras.setModel(new DefaultComboBoxModel(new String[] {"", "8:30", "9:30", "10:30", "13:30", "14:30", "15:30", "16:30", "17:30"}));
-		optHoras.setBackground(new Color(255, 255, 255));
-		optHoras.setBounds(31, 133, 269, 30);
-		contentPane.add(optHoras);
-		
-		JComboBox optBarbeiro = new JComboBox();
-		optBarbeiro.setModel(new DefaultComboBoxModel(new String[] {"", "Jorge", "Vitor", "Juninho", "Trevor"}));
+		JComboBox<String> optBarbeiro = new JComboBox<String>();
+		optBarbeiro.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		optBarbeiro.setModel(new DefaultComboBoxModel<String>(new String[] {"Barbeiro", "Jorge", "Vitor", "Gabriel", "Trevor"}));
 		optBarbeiro.setBackground(Color.WHITE);
-		optBarbeiro.setBounds(31, 174, 269, 30);
+		optBarbeiro.setBounds(31, 147, 269, 30);
 		contentPane.add(optBarbeiro);
-		
-		JEditorPane agendaLista = new JEditorPane();
-		agendaLista.setText("Nome: Vitor" + "\nDia: 10/03/2022" + "\nHora: 14:30" + "\nBarbeiro: Jorge");
-		agendaLista.setFont(new Font("Fira Code", Font.PLAIN, 16));
-		agendaLista.setBounds(31, 228, 269, 90);
-		contentPane.add(agendaLista);
 		
 		JSeparator separator = new JSeparator();
 		separator.setToolTipText("");
 		separator.setForeground(Color.BLACK);
 		separator.setBackground(Color.BLACK);
-		separator.setBounds(31, 215, 269, 2);
+		separator.setBounds(31, 200, 269, 2);
 		contentPane.add(separator);
 		
 		JLabel lblNewLabel_1 = new JLabel("Agendamento Da Semana");
@@ -113,17 +86,19 @@ public class ViewAgendamento extends JFrame {
 		lblNewLabel_1.setBounds(67, 52, 207, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JComboBox optData = new JComboBox();
-		optData.setModel(new DefaultComboBoxModel(new String[] {"", "29/07/2022", "30/07/2022", "31/07/2022", "01/07/2022", "02/07/2022", "03/07/2022", "04/07/2022"}));
+		JComboBox<String> optData = new JComboBox<String>();
+		optData.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		optData.setModel(new DefaultComboBoxModel<String>(new String[] {"Data", "31/07/2022", "01/08/2022", "02/08/2022", "03/08/2022", "04/08/2022", "05/08/2022", "06/08/2022"}));
 		optData.setBackground(Color.WHITE);
-		optData.setBounds(31, 92, 129, 30);
+		optData.setBounds(31, 106, 129, 30);
 		contentPane.add(optData);
 		
-		JComboBox optPeriodo = new JComboBox();
-		optPeriodo.setModel(new DefaultComboBoxModel(new String[] {"", "Manhã", "Tarde"}));
-		optPeriodo.setBackground(Color.WHITE);
-		optPeriodo.setBounds(179, 92, 121, 30);
-		contentPane.add(optPeriodo);
+		JComboBox<String>  optHoras = new JComboBox<String>();
+		optHoras.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		optHoras.setModel(new DefaultComboBoxModel<String>(new String[] {"Hora", "8:30", "9:30", "10:30", "13:30", "14:30", "15:30", "16:30", "17:30"}));
+		optHoras.setBackground(Color.WHITE);
+		optHoras.setBounds(182, 106, 118, 30);
+		contentPane.add(optHoras);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setToolTipText("");
@@ -131,5 +106,41 @@ public class ViewAgendamento extends JFrame {
 		separator_1.setBackground(Color.BLACK);
 		separator_1.setBounds(31, 79, 269, 2);
 		contentPane.add(separator_1);
+		
+		JButton btnAgendar = new JButton("Agendar");
+		btnAgendar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Agendamento novoAgendamento = new Agendamento(nome, optData.getSelectedItem().toString(), optHoras.getSelectedItem().toString(), optBarbeiro.getSelectedItem().toString());
+				
+				Agendamento.agendamentos.add(novoAgendamento);
+				JOptionPane.showMessageDialog(null, "Agendamento registrado");
+			}
+		});
+		btnAgendar.setBounds(31, 211, 118, 62);
+		btnAgendar.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		btnAgendar.setBackground(new Color(255, 255, 255));
+		contentPane.add(btnAgendar);
+		
+		JButton btnMinhaAgenda = new JButton("Minha Agenda");
+		btnMinhaAgenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewAgendaCli agendaCli = new ViewAgendaCli(nome);
+				agendaCli.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnMinhaAgenda.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		btnMinhaAgenda.setBackground(Color.WHITE);
+		btnMinhaAgenda.setBounds(160, 211, 140, 62);
+		contentPane.add(btnMinhaAgenda);
+		
+		
+		
+		JLabel lblNewLabel_2 = new JLabel("Bem vindo " + nome);
+		lblNewLabel_2.setFont(new Font("Fira Code", Font.PLAIN, 17));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(31, 322, 269, 40);
+		contentPane.add(lblNewLabel_2);
 	}
 }

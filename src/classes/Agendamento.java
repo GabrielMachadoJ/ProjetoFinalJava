@@ -1,86 +1,72 @@
 package classes;
 
+import java.util.ArrayList;
+
 public class Agendamento {
 	
-	private int id;
-	private Cliente cliente;
-	private Servico servico;
-	private Double valor;
+	private String nome;
 	private String data;
 	private String hora;
+	private String barbeiro;
+	
+	public static ArrayList<Agendamento> agendamentos = new ArrayList<>();
+	
+	public static String listarAgendamento() {
+		String txtRelatorio = "";
+		
+		for(int i = agendamentos.size() - 1; i >= 0; i--) {
+			txtRelatorio += agendamentos.get(i) + "\n-----------";
+		}
+		return txtRelatorio;
+	}
 	
 	
-	public Agendamento(int id, Cliente cliente, Servico servico, Double valor, String data, String hora) {
-		super();
-		this.id = id;
-		this.cliente = cliente;
-		this.servico = servico;
-		this.valor = valor;
+	
+	public Agendamento(String data, String hora, String barbeiro) {
 		this.data = data;
 		this.hora = hora;
+		this.barbeiro = barbeiro;
+	}
+	
+	public Agendamento(String nome, String data, String hora, String barbeiro) {
+		this.nome = nome;
+		this.data = data;
+		this.hora = hora;
+		this.barbeiro = barbeiro;
+	}
+	
+	public String toString() {
+		return "\nNome: " + nome + "\nDia: " + data + "\nHora: " + hora + "\nBarbeiro: " + barbeiro;
 	}
 
-
-	public int getId() {
-		return id;
+	public Agendamento() {
+		
 	}
-
-
-	public void setId(int id) {
-		this.id = id;
+	
+	public String getNome() {
+		return nome;
 	}
-
-
-	public Cliente getCliente() {
-		return cliente;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-
-	public Servico getServico() {
-		return servico;
-	}
-
-
-	public void setServico(Servico servico) {
-		this.servico = servico;
-	}
-
-
-	public Double getValor() {
-		return valor;
-	}
-
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-
 	public String getData() {
 		return data;
 	}
-
-
 	public void setData(String data) {
 		this.data = data;
 	}
-
-
 	public String getHora() {
 		return hora;
 	}
-
-
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+	public String getBarbeiro() {
+		return barbeiro;
+	}
+	public void setBarbeiro(String barbeiro) {
+		this.barbeiro = barbeiro;
+	}
 	
 	
-	
-
 }

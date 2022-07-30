@@ -1,12 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.View;
+
+import classes.Cliente;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -20,16 +21,19 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 
 public class ViewCadCli extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtNome;
+	private JTextField txtCpf;
+	private JTextField txtEmail;
+	private JTextField txtFone;
 	protected Window frame;
 
 	/**
@@ -101,30 +105,36 @@ public class ViewCadCli extends JFrame {
 		lblNewLabel_1_1_1_1.setBounds(34, 233, 72, 14);
 		contentPane.add(lblNewLabel_1_1_1_1);
 		
-		textField = new JTextField();
-		textField.setBounds(34, 88, 269, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(34, 88, 269, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(34, 147, 269, 20);
-		contentPane.add(textField_1);
+		txtCpf = new JTextField();
+		txtCpf.setColumns(10);
+		txtCpf.setBounds(34, 147, 269, 20);
+		contentPane.add(txtCpf);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(34, 203, 269, 20);
-		contentPane.add(textField_2);
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(34, 203, 269, 20);
+		contentPane.add(txtEmail);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(34, 258, 269, 20);
-		contentPane.add(textField_3);
+		txtFone = new JTextField();
+		txtFone.setColumns(10);
+		txtFone.setBounds(34, 258, 269, 20);
+		contentPane.add(txtFone);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setForeground(new Color(255, 255, 255));
-		btnCadastrar.addActionListener(new ActionListener() {
+		btnCadastrar.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
+				Cliente cliente = new Cliente(txtNome.getText(), txtCpf.getText(), txtEmail.getText(), txtFone.getText());
+				Cliente.clientes.add(cliente);
+				JOptionPane.showMessageDialog(null, "Seu login: " + txtNome.getText() + "\nSua senha: " + txtCpf.getText());
+				ViewLogin telaLogin = new ViewLogin();
+				telaLogin.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnCadastrar.setBackground(new Color(0, 153, 0));

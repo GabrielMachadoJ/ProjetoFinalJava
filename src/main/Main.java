@@ -12,6 +12,7 @@ public class Main {
 		ViewInicio inicio = new ViewInicio();
 		
 		inicio.setVisible(true);
-		
+
+			
 	}
 }

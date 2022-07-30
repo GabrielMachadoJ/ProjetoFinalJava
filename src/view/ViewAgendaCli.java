@@ -19,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import classes.Agendamento;
 
-public class ViewAgenda extends JFrame {
+public class ViewAgendaCli extends JFrame {
 
 	/**
 	 * 
@@ -35,7 +35,7 @@ public class ViewAgenda extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAgenda frame = new ViewAgenda();
+					ViewAgendaCli frame = new ViewAgendaCli(String);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class ViewAgenda extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewAgenda() {
+	public ViewAgendaCli(String nome) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 352, 439);
 		contentPane = new JPanel();
@@ -81,8 +81,8 @@ public class ViewAgenda extends JFrame {
 		JButton btnAgendar = new JButton("Voltar");
 		btnAgendar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewBarbeiro inicio = new ViewBarbeiro();
-				inicio.setVisible(true);
+				ViewAgendamento agendamento = new ViewAgendamento(nome);
+				agendamento.setVisible(true);
 				setVisible(false);
 				
 			}
@@ -100,11 +100,7 @@ public class ViewAgenda extends JFrame {
 		JTextArea txtAgenda = new JTextArea();
 		txtAgenda.setEditable(false);
 		txtAgenda.setFont(new Font("Fira Code", Font.PLAIN, 15));
-		if (Agendamento.agendamentos.size() <= 0) {
-			txtAgenda.setText("Nenhum registro!");
-		} else {
-			txtAgenda.setText(Agendamento.listarAgendamento());
-		}
+		txtAgenda.setText(Agendamento.listarAgendamento());
 		scrollPane_1.setViewportView(txtAgenda);
 		
 		JButton btnSair = new JButton("Sair");
