@@ -100,7 +100,7 @@ public class ViewLogin extends JFrame {
 				} else {
 					if (Cliente.clientes.size() > 0) {
 						for (int i = 0; i < Cliente.clientes.size(); i++) {
-							if (txtLogin.getText().equals(Cliente.clientes.get(i).getNome())) {
+							if (txtLogin.getText().equals(Cliente.clientes.get(i).getNome() )&& new String(txtPass.getPassword()).equals(Cliente.clientes.get(i).getCpf())) {
 								ViewAgendamento agenda = new ViewAgendamento(txtLogin.getText());
 								agenda.setVisible(true);
 								setVisible(false);

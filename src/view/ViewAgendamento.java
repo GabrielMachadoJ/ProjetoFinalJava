@@ -88,7 +88,7 @@ public class ViewAgendamento extends JFrame {
 		
 		JComboBox<String> optData = new JComboBox<String>();
 		optData.setFont(new Font("Fira Code", Font.PLAIN, 15));
-		optData.setModel(new DefaultComboBoxModel<String>(new String[] {"Data", "31/07/2022", "01/08/2022", "02/08/2022", "03/08/2022", "04/08/2022", "05/08/2022", "06/08/2022"}));
+		optData.setModel(new DefaultComboBoxModel<String>(new String[] {"Data", "02/08/2022", "03/08/2022", "04/08/2022", "05/08/2022", "06/08/2022", "07/08/2022","08/08/2022"}));
 		optData.setBackground(Color.WHITE);
 		optData.setBounds(31, 106, 129, 30);
 		contentPane.add(optData);
@@ -117,7 +117,7 @@ public class ViewAgendamento extends JFrame {
 				JOptionPane.showMessageDialog(null, "Agendamento registrado");
 			}
 		});
-		btnAgendar.setBounds(31, 211, 118, 62);
+		btnAgendar.setBounds(31, 211, 105, 62);
 		btnAgendar.setFont(new Font("Fira Code", Font.PLAIN, 15));
 		btnAgendar.setBackground(new Color(255, 255, 255));
 		contentPane.add(btnAgendar);
@@ -130,9 +130,9 @@ public class ViewAgendamento extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnMinhaAgenda.setFont(new Font("Fira Code", Font.PLAIN, 15));
+		btnMinhaAgenda.setFont(new Font("Fira Code", Font.PLAIN, 14));
 		btnMinhaAgenda.setBackground(Color.WHITE);
-		btnMinhaAgenda.setBounds(160, 211, 140, 62);
+		btnMinhaAgenda.setBounds(146, 211, 154, 62);
 		contentPane.add(btnMinhaAgenda);
 		
 		
